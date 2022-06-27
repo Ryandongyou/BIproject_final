@@ -55,6 +55,7 @@
   text-decoration: none;
   letter-spacing: -1px;
   color: #000;
+  font-size: 20px;
 }
 /*오른쪽 메뉴 마우스 호버*/
 .menu li:nth-last-child(-n+2):hover{
@@ -81,18 +82,22 @@
   .menu{
       flex-direction: column;
       height: 100%;/*우측 메뉴를 세로 하단으로 고정에 필요*/
+            
   }
   .menu li{
       text-align: initial;
+
   }
   /*오른쪽 메뉴를 세로 메뉴 하단에 고정*/
   .menu li:nth-child(7){
       margin-left: 0;
       margin-top: auto;
+      
   }
   /*왼쪽 메뉴 마우스 호버 밑줄 늘어남 처리*/
   .menu li:nth-child(-n+6){
       border-bottom: 2px solid rgba(0,0,0,0);
+      
   }    
 }
 
@@ -516,8 +521,6 @@
     </div>
   </span></fieldset>
  </form>
-
-<div><label>안녕</label></div>
 
 
 
