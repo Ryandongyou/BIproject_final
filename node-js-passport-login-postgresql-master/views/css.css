@@ -1,0 +1,84 @@
+html, body{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/*메뉴 영역*/
+.nav{
+  padding: 5px 20px;
+  box-sizing: border-box;
+  background-color: #fee;
+}
+/*메뉴 목록*/
+.menu{
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1em;
+}
+/*메뉴 아이템*/
+.menu li{
+  text-align: center;
+}
+/*홈*/
+.menu li:nth-child(1){
+  margin-right: auto;
+}
+/*오른쪽 메뉴 분할*/
+.menu li:nth-child(7){
+  margin-left: auto;
+}
+/*오른쪽 메뉴 장식*/
+.menu li:nth-last-child(-n+2){
+  border-radius: 15px;
+  background-color: #faa;
+}
+/*하이퍼링크 처리*/
+.menu li a{
+  display: block;
+  padding: 5px 15px;
+  text-decoration: none;
+  letter-spacing: -1px;
+  color: #000;
+}
+/*오른쪽 메뉴 마우스 호버*/
+.menu li:nth-last-child(-n+2):hover{
+  background-color: #f66;
+}
+.menu li:nth-last-child(-n+2):hover a{
+  color: #fff;
+}
+/*왼쪽 메뉴 마우스 호버*/
+.menu li:nth-child(-n+6):hover{
+  border-bottom: 2px solid #f66;
+}
+/*반응형 모바일*/
+@media screen and (max-width: 767px){
+  header{
+      height: 100%;
+  }
+  /*너비 제한*/
+  .nav{
+      width: 260px;
+      height: 100%;
+  }
+  /*세로 보기 설정*/
+  .menu{
+      flex-direction: column;
+      height: 100%;/*우측 메뉴를 세로 하단으로 고정에 필요*/
+  }
+  .menu li{
+      text-align: initial;
+  }
+  /*오른쪽 메뉴를 세로 메뉴 하단에 고정*/
+  .menu li:nth-child(7){
+      margin-left: 0;
+      margin-top: auto;
+  }
+  /*왼쪽 메뉴 마우스 호버 밑줄 늘어남 처리*/
+  .menu li:nth-child(-n+6){
+      border-bottom: 2px solid rgba(0,0,0,0);
+  }    
+}

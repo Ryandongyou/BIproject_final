@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Home</title>
+  </head>
+  <style>
+    h1 {
+      text-align: center;
+      padding: 200px 0px;
+      transform: translateY(25%);
+      position: static;
+    }
+
+    .home_link{
+      transform: translateY(0%);
+      text-align: center;
+      position: relative;
+      top:-5em;
+    }
+
+      .error_home {
+        text-align: center;
+        /* transform: translateY(-80%); */
+        height: 100px;
+        margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      top:-10ex;
+      }
+    
+  </style>
+  <body>
+    <h1>Home</h1>
+
+    <% if (typeof message !== 'undefined' ) { %>
+    <p class="error_home"><%= message %></p>
+    <% } %>
+
+    <div class="home_link">
+    <a href="/users/login" >Login</a></div>
+  </body>
+</html>

@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link href="css.css" rel="preconnect"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+<script type="text/javascript" src = "js/jquery/js"></script>
+    <style>
+      html, body{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/*메뉴 영역*/
+.nav{
+  padding: 5px 20px;
+  box-sizing: border-box;
+  background-color: #fee;
+}
+/*메뉴 목록*/
+.menu{
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1em;
+}
+/*메뉴 아이템*/
+.menu li{
+  text-align: center;
+}
+/*홈*/
+.menu li:nth-child(1){
+  margin-right: auto;
+}
+/*오른쪽 메뉴 분할*/
+.menu li:nth-child(7){
+  margin-left: auto;
+}
+/*오른쪽 메뉴 장식*/
+.menu li:nth-last-child(-n+2){
+  border-radius: 15px;
+  background-color: #faa;
+}
+/*하이퍼링크 처리*/
+.menu li a{
+  display: block;
+  padding: 5px 15px;
+  text-decoration: none;
+  letter-spacing: -1px;
+  color: #000;
+}
+/*오른쪽 메뉴 마우스 호버*/
+.menu li:nth-last-child(-n+2):hover{
+  background-color: #f66;
+}
+.menu li:nth-last-child(-n+2):hover a{
+  color: #fff;
+}
+/*왼쪽 메뉴 마우스 호버*/
+.menu li:nth-child(-n+6):hover{
+  border-bottom: 2px solid #f66;
+}
+/*반응형 모바일*/
+@media screen and (max-width: 767px){
+  header{
+      height: 100%;
+  }
+  /*너비 제한*/
+  .nav{
+      width: 260px;
+      height: 100%;
+  }
+  /*세로 보기 설정*/
+  .menu{
+      flex-direction: column;
+      height: 100%;/*우측 메뉴를 세로 하단으로 고정에 필요*/
+  }
+  .menu li{
+      text-align: initial;
+  }
+  /*오른쪽 메뉴를 세로 메뉴 하단에 고정*/
+  .menu li:nth-child(7){
+      margin-left: 0;
+      margin-top: auto;
+  }
+  /*왼쪽 메뉴 마우스 호버 밑줄 늘어남 처리*/
+  .menu li:nth-child(-n+6){
+      border-bottom: 2px solid rgba(0,0,0,0);
+  }    
+}
+
+      *{
+        font-family: 'Do Hyeon', sans-serif;
+        margin: 0.5em;
+      }
+      /* get css 입력 */
+      #GET{
+        font-size: 20px;
+        height: 30px;
+        margin-bottom: 1em;
+      }
+      /* add css 입력
+      #add{
+        width : 200px;
+        height: 25px;
+        font-size: 20px;
+        border-radius: 3px;
+      } */
+      /* #입력 {
+        width : 100px;
+        height: 30px;
+        border-radius: 3px;
+        font-size: 20px;
+        text-align:center; 
+       } */
+      /* #추가데이터{
+        font-size: 20px;
+      } */
+      #열이름{
+        font-size: 20px;
+      }
+
+      #데이터이름{
+        font-size: 20px;
+      }
+      .삭제{
+        font-size: 20px;
+        border-radius: 5px;
+      }
+      #삭제 {
+        width : 100px;
+        height: 30px;
+        border-radius: 3px;
+        font-size: 20px;
+        text-align:center;
+      }
+      /* #oldvalue {
+        width : 200px;
+        height: 25px;
+        font-size: 20px;
+        border-radius: 3px;
+      }
+      #newvalue {
+        width : 200px;
+        height: 25px;
+        font-size: 20px;
+        border-radius: 3px;
+      } */
+      #delcolumn {
+        width : 200px;
+        height: 25px;
+        font-size: 20px;
+        border-radius: 3px;
+      }
+      
+      #delete {
+        width : 200px;
+        height: 25px;
+        font-size: 20px;
+        border-radius: 3px;
+      }
+      #데이터삭제_폰트 {
+        font-size: 1.2em;
+      }
+
+      /* ㅜㅍ */
+
+      #테이블명{
+        font-size: 20px;
+      }
+
+      #칼럼명{
+        font-size: 20px;
+      }
+      .생성{
+        font-size: 20px;
+        border-radius: 5px;
+      }
+      #생성 {
+        width : 100px;
+        height: 30px;
+        border-radius: 3px;
+        font-size: 20px;
+        text-align:center;
+      }
+      #추가 {
+        width : 100px;
+        height: 30px;
+        border-radius: 3px;
+        font-size: 20px;
+        text-align:center;
+      }
+      #테이블제거 {
+        width : 100px;
+        height: 30px;
+        border-radius: 3px;
+        font-size: 20px;
+        text-align:center;
+      }
+      #테이블조회 {
+        width : 100px;
+        height: 30px;
+        border-radius: 3px;
+        font-size: 20px;
+        text-align:center;
+      }
+      #create_tb {
+        width : 200px;
+        height: 25px;
+        font-size: 20px;
+        border-radius: 3px;
+      }
+      
+      #tb_colname1 {
+        width : 200px;
+        height: 25px;
+        font-size: 20px;
+        border-radius: 3px;
+      }
+      #tb_colname2 {
+        width : 200px;
+        height: 25px;
+        font-size: 20px;
+        border-radius: 3px;
+      }
+      #tb_colname3 {
+        width : 200px;
+        height: 25px;
+        font-size: 20px;
+        border-radius: 3px;
+      }
+      #tb_colname4 {
+        width : 200px;
+        height: 25px;
+        font-size: 20px;
+        border-radius: 3px;
+      }
+      #tb_colname5 {
+        width : 200px;
+        height: 25px;
+        font-size: 20px;
+        border-radius: 3px;
+      }
+      #tb_colname6 {
+        width : 200px;
+        height: 25px;
+        font-size: 20px;
+        border-radius: 3px;
+      }
+      #tb_colname7 {
+        width : 200px;
+        height: 25px;
+        font-size: 20px;
+        border-radius: 3px;
+      }
+      #테이블생성_폰트 {
+        font-size: 1.2em;
+      }
+
+      .칼럼명{
+        margin-left: 4em;
+        margin-right: 4em;
+        left : 5em;
+        right : 5em;
+        top : 100em;
+      }
+      
+      /* .업데이트 {
+        font-size: 20px;
+        border-radius: 5px;
+      } */
+
+      /* #업데이트 {
+        width : 100px;
+        height: 30px;
+        border-radius: 3px;
+        font-size: 20px;
+        text-align:center;
+      } */
+
+      #정보입력_desc{
+        font-size: 18px;
+      }
+      .방문자_div{
+        position: relative;
+        top : 1em;
+        left : 0em;
+        font-size: 20px;
+      }
+
+      .명부 {
+        font-weight: lighter;
+      }
+
+      .정보입력란{
+        margin: 1em;
+        padding : 1em;
+        border-radius: 5px;
+        height: 9em;
+        width: 60 em;
+        background-color: rgb(139, 166, 218);
+      }
+
+      #정보입력_폰트{
+        font-size: 25px;
+        
+      }
+      .방문자 {
+        font-size: 20px;
+        border-radius: 5px;
+       
+      }
+
+      #이름 {
+        width : 200px;
+        height: 25px;
+        font-size: 20px;
+        border-radius: 3px; 
+      }
+
+      #사번 {
+        width : 200px;
+        height: 25px;
+        font-size: 20px;
+        border-radius: 3px;
+      }
+
+      #방문목적 {
+        width : 200px;
+        height: 25px;
+        font-size: 20px;
+        border-radius: 3px;
+      }
+
+      #사용날짜 {
+        width : 200px;
+        height: 25px;
+        font-size: 20px;
+        border-radius: 3px;
+      }
+
+      #비고 {
+        width : 200px;
+        height: 25px;
+        font-size: 20px;
+        border-radius: 3px;
+      }
+
+      #팀 {
+        width : 200px;
+        height: 25px;
+        font-size: 20px;
+        border-radius: 3px;
+      }
+
+      #방문자입력 {
+        width : 100px;
+        height: 30px;
+        border-radius: 3px;
+        font-size: 20px;
+        text-align:center;
+      }
+
+      .table{
+        font-size : 20px;
+        margin: 1em;
+      }
+
+      .방문기록{
+        font-size: 25px;
+      }
+
+      .테이블조회_필드{
+        margin: 1em;
+        padding : 1em;
+        border-radius: 5px;
+        height: 10em;
+        width: 60 em;
+        
+      }
+
+      .칼럼{
+        font-size : 20px;
+        margin: 2em;
+      }
+
+      .테이블필드{
+        font-size : 20px;
+        margin: 2em;
+        position: absolute;
+      }
+
+      #리셋 {
+        width : 100px;
+        height: 30px;
+        border-radius: 3px;
+        font-size: 20px;
+        text-align:center;
+      }
+
+    </style>
+    <header>
+        <div class="nav">
+            <ul class="menu">
+                <li><a href="/users/dashboard2">홈</a></li>
+                <li><a href="/users/visitorinfo">방문자정보 입력</a></li>
+                <li><a href="#">BI 대시보드</a></li>
+                <li><a href="#">커뮤니티</a></li>
+                <li><a href="#">환경설정</a></li>
+                <li><a href="#">마이페이지</a></li>
+                <li><a href="#">환경설정</a></li>
+                <li><a href="/users/logout">로그아웃</a></li>
+            </ul>
+            
+        </div>
+    </header>
+  </head> 
+  <body>
+ 
+    
+
+    <h1>방문자 출입 명부</h1>
+    <h2 class="명부">출입 시 방문자 인원들은 아래 내용을 작성 부탁드립니다.</h2>
+    <form id ="폼1" action="/info/get" method ="GET">
+      <input id="리셋" type="reset">
+    <input id="GET" type="submit" value="조회" size="50">
+    
+ </form>
+    
+    <!-- <input type = "reset" id = "리셋"> -->
+  
+
+    <!-- <form id="폼2" action="/info/add" method ="POST">
+    <label id = "추가데이터" for="add">추가 데이터: </label>
+    <input type="text" name="add" id="add">
+    <input type="submit" value="입력" id="입력"></form> -->
+
+
+    <form class ="삭제" action="/info/delete" method ="POST">
+      <h1 id="데이터삭제_폰트">● 데이터 삭제</h1>
+    <label id = "열이름" for="delcolumn">열이름: </label>
+    <input type="text" name="delcolumn" id="delcolumn">
+    <label id = "데이터이름" for="delete">데이터 이름: </label>
+    <input type="text" name="delete" id="delete">
+    <input id = "삭제" type="submit" value="삭제">
+    <input id="리셋" type="reset"></form>
+
+    <!-- <form class ="테이블조회" action="/info/get" method ="GET">
+      <input id = "테이블조회" type="submit" value="테이블조회"></form> -->
+
+    <form class ="생성" action="/info/create" method ="POST">
+      <h1 id="테이블생성_폰트">● 테이블 생성 및 조회</h1>
+    <h2><label id = "테이블명" for="create_tb">테이블명: </label>
+    <input type="text" name="create_tb" id="create_tb">
+    <input id = "테이블제거" type="submit" value="테이블제거" onclick="javascript: form.action='/info/drop';">
+</h2>
+    <span class = "칼럼명">
+    <label id = "칼럼명" for="tb_colname1">칼럼명1: </label>
+    <input type="text" name="tb_colname1" id="tb_colname1">
+    <label id = "칼럼명" for="tb_colname2">칼럼명2: </label>
+    <input type="text" name="tb_colname2" id="tb_colname2">
+    <label id = "칼럼명" for="tb_colname3">칼럼명3: </label>
+    <input type="text" name="tb_colname3" id="tb_colname3">
+    <label id = "칼럼명" for="tb_colname4">칼럼명4: </label>
+    <input type="text" name="tb_colname4" id="tb_colname4">
+    <label id = "칼럼명" for="tb_colname5">칼럼명5: </label>
+    <input type="text" name="tb_colname5" id="tb_colname5">
+    <label id = "칼럼명" for="tb_colname6">칼럼명6: </label>
+    <input type="text" name="tb_colname6" id="tb_colname6">
+    <label id = "칼럼명" for="tb_colname7">칼럼명7: </label>
+    <input type="text" name="tb_colname7" id="tb_colname7">
+  
+    <input id = "생성" type="submit" value="생성">
+
+    <input id = "추가" type="submit" value="추가" onclick="javascript: form.action='/info/add3';">
+
+    <input id="리셋" type="reset"></form>
+    <!-- <button id = "조회" type="button" value="조회" onclick="javascript: form.action='/info/get';"></button> -->
+
+    <!-- <form class = "업데이트" action="/info/update" method ="POST">
+    <label for="oldvalue">변경할 값: </label>
+    <input type="text" name="oldvalue" id="oldvalue">
+    <label for="newvalue">변경값: </label>
+    <input type="text" name="newvalue" id="newvalue">
+    <input id = "업데이트" type="submit" value="업데이트"></form> -->
+  
+
+<form class = "방문자" action="/info/add2" method ="POST">
+  <fieldset class="정보입력란">
+      <h id="정보입력_폰트">※ 방문자 출입 정보 ※</h>
+      <h id="정보입력_desc">모든 방문출입 인원은 해당 데이터를 입력 바랍니다. (날짜 예시 : 2021-10-11)</h>
+       <div class = "방문자_div">
+         <label for="이름">이름: </label>
+      
+    <input type="text" name="이름" id="이름">
+    <label for="사번">사번: </label>
+    <input type="text" name="사번" id="사번">
+    <span class = "방문자_span2">
+    <label for="방문목적">방문목적: </label>
+    <input type="text" name="방문목적" id="방문목적">
+    <label for="사용날짜">사용날짜: </label>
+    <input type="text" name="사용날짜" id="사용날짜">
+    <label for="비고">비고: </label>
+    <input type="text" name="비고" id="비고">
+    <label for="팀">팀: </label>
+    <input type="text" name="팀" id="팀">
+    <input type="submit" value="입력" id="방문자입력">
+    <input id="리셋" type="reset">
+    </div>
+  </span></fieldset>
+ </form>
+
+
+
+
+
+  </body>
+  </html>

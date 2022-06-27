@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css"
+    />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    
+
+    <style>
+                *{
+        font-family: 'Do Hyeon', sans-serif;
+        margin: 0.5em;
+      }
+      h1 {
+        text-align: center;
+        padding: 200px 0px;
+        transform: translateY(15%);
+      }
+      .login_input{
+        transform: translateY(-75%);
+        text-align: center;
+      }
+
+      .error_login {
+        text-align: center;
+        transform: translateY(-100%);
+      height: auto;
+      position: relative;
+      top:-8em;
+      }
+      
+    </style>
+    <title>Login</title>
+  </head>
+
+  <body>
+    <h1>Login</h1>
+
+    <ul>
+      <% if (typeof errors != 'undefined') { %> <% errors.forEach(error => { %>
+      <li class="error_login"><%= error.message %></li>
+      <% }) %> <% } %>
+    </ul>
+
+    <ul >
+      <% if(messages.success_msg) { %>
+      <li class="error_login"><%= messages.success_msg %></li>
+      <% } %>
+    </ul>
+
+    <ul">
+      <% if (messages.error) { %>
+      <li class="error_login"><%= messages.error %></li>
+      <% } %>
+    </ul>
+
+    <form class="login_input" action="/users/login" method="POST">
+      <div>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Email"
+          required
+        />
+      </div>
+      <div>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Password"
+          required
+        />
+      </div>
+      <div>
+        <input type="submit" value="Login" />
+      </div>
+
+      <a href="/users/register">Register</a>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+<script type="text/javascript" src = "js/jquery/js"></script>
+    <title>Dashboard</title>
+</head>
+<style>
+*{
+    font-family: 'Do Hyeon', sans-serif;
+    margin: 0.5em;
+}
+
+    html, body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/*메뉴 영역*/
+.nav{
+    padding: 5px 20px;
+    box-sizing: border-box;
+    background-color: #fee;
+}
+/*메뉴 목록*/
+.menu{
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 1em;
+}
+/*메뉴 아이템*/
+.menu li{
+    text-align: center;
+}
+/*홈*/
+.menu li:nth-child(1){
+    margin-right: auto;
+}
+/*오른쪽 메뉴 분할*/
+.menu li:nth-child(7){
+    margin-left: auto;
+}
+/*오른쪽 메뉴 장식*/
+.menu li:nth-last-child(-n+2){
+    border-radius: 15px;
+    background-color: #faa;
+}
+/*하이퍼링크 처리*/
+.menu li a{
+    display: block;
+    padding: 5px 15px;
+    text-decoration: none;
+    letter-spacing: -1px;
+    color: #000;
+}
+/*오른쪽 메뉴 마우스 호버*/
+.menu li:nth-last-child(-n+2):hover{
+    background-color: #f66;
+}
+.menu li:nth-last-child(-n+2):hover a{
+    color: #fff;
+}
+/*왼쪽 메뉴 마우스 호버*/
+.menu li:nth-child(-n+6):hover{
+    border-bottom: 2px solid #f66;
+}
+/*반응형 모바일*/
+@media screen and (max-width: 767px){
+    header{
+        height: 100%;
+    }
+    /*너비 제한*/
+    .nav{
+        width: 260px;
+        height: 100%;
+    }
+    /*세로 보기 설정*/
+    .menu{
+        flex-direction: column;
+        height: 100%;/*우측 메뉴를 세로 하단으로 고정에 필요*/
+    }
+    .menu li{
+        text-align: initial;
+    }
+    /*오른쪽 메뉴를 세로 메뉴 하단에 고정*/
+    .menu li:nth-child(7){
+        margin-left: 0;
+        margin-top: auto;
+    }
+    /*왼쪽 메뉴 마우스 호버 밑줄 늘어남 처리*/
+    .menu li:nth-child(-n+6){
+        border-bottom: 2px solid rgba(0,0,0,0);
+    }    
+}
+</style>
+<body>
+    
+    <header>
+        <div class="nav">
+            <ul class="menu">
+                <li><a href="#">홈</a></li>
+                <li><a href="/users/visitorinfo">방문자정보 입력</a></li>
+                <li><a href="#">BI 대시보드</a></li>
+                <li><a href="#">커뮤니티</a></li>
+                <li><a href="#">환경설정</a></li>
+                <li><a href="#">마이페이지</a></li>
+                <li><a href="#">환경설정</a></li>
+                <li><a href="/users/logout">로그아웃</a></li>
+            </ul>
+            
+        </div>
+    </header>
+</body>
+</html>

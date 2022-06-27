@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Register</title>
+  </head>
+  <style>
+          *{
+        font-family: 'Do Hyeon', sans-serif;
+        margin: 0.5em;
+      }
+    h1 {
+      text-align: center;
+      padding: 200px 0px;
+      transform: translateY(10%);
+    }
+    .register_input{
+      transform: translateY(-50%);
+      text-align: center;
+    }
+
+      .error_register {
+        text-align: center;
+        transform: translateY(-100%);
+      height: auto;
+      position: relative;
+      top:-8em;
+      }
+      
+    
+    
+  </style>
+  <body>
+    <h1>Register</h1>
+
+    <ul>
+      <% if (typeof errors != 'undefined') { %> <% errors.forEach(error => { %>
+      <li class="error_register"><%= error.message %></li>
+      <% }) %> <% } %>
+    </ul>
+    <form class="register_input" action="/users/register" method="POST">
+      <div>
+        <input type="text" id="name" name="name" placeholder="Name" required />
+      </div>
+      <div>
+        <input 
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Email"
+          required
+        />
+      </div>
+      <div>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Password"
+          required
+        />
+      </div>
+      <div>
+        <input
+          type="password"
+          id="password2"
+          name="password2"
+          placeholder="Confirm Password"
+          required
+        />
+      </div>
+      <div>
+        <input type="submit" value="Register" />
+      </div>
+
+      <a href="/users/login">Already registered? Login here</a>
+    </form>
+  </body>
+</html>
